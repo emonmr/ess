@@ -27,6 +27,7 @@ export function productReducer(state: ProductState = initialState, action: Produ
         data: action.payload
       };
     case ProductActionTypes.REMOVE_PRODUCT:
+      LocalStorageService.removeItem('product');
       return {
         data: []
       };

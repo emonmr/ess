@@ -29,6 +29,7 @@ export function userReducer(state: UserState = initialState, action: UserActions
         data: action.payload
       };
     case UserActionTypes.REMOVE_USER:
+      LocalStorageService.removeItem('user');
       return {
         logged_in: false,
         data: null
