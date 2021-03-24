@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-sm-8">
+    <div class="card mt-4">
+      <h4 class="card-header">Products</h4>
+      <div class="card-body">
+        <h6 *ngIf="(userData | async) as user">
+          All Products of {{user.firstName}} {{user.lastName }}
+        </h6>
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Details</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let product of (products | async); index as i">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{product.name}}</td>
+            <td>{{product.price | currency}}</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.details}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card mt-4">
+      <div class="card-header">
+        <h6>All Users</h6>
+      </div>
+      <div class="card-body">
+        <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+        <ul class="list-group">
+          <li class="list-group-item"  *ngFor="let user of users">{{user.firstName}} {{user.lastName}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
